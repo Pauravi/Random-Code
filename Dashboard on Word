@@ -1,0 +1,581 @@
+public String FancyAspose(String st) {
+        System.out.println("Hello world");
+        final String val = "aaaa";
+        st = "2010-JFKA-DEMOLISH-ASBESTOS";
+        License();
+        
+        Document doc = null;
+        try {
+            doc =
+                    new Document(
+                        "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/archibus/schema/per-site/Compliance Survey Files/SurveyDocs/graph.docx");
+        } catch (final Exception e1) {
+            // TODO Auto-generated catch block
+            e1.printStackTrace();
+        }
+        
+        // Add a paragraph with text to the footer.
+        
+        final DataSource project = DataSourceFactory.createDataSource();
+        project.addTable("project");
+        project.addField("project_id");
+        project.addField("project_name");
+        project.addField("bl_id");
+        project.addField("site_id");
+        project.addField("scope");
+        project.addQuery("SELECT * FROM project WHERE project_id ='" + st + "' ");
+        String project_name = "blank", bl_id = "blank", site_id = "blank", scope = "blank";
+        
+        for (final DataRecord record1 : project.getAllRecords()) {
+            bl_id = record1.getValue("project.bl_id").toString();
+            site_id = record1.getValue("project.site_id").toString();
+            scope = record1.getValue("project.scope").toString();
+            // start_date = record1.getValue("project.bl_id").toString();
+            // end_date = record1.getValue("project.bl_id").toString();
+            project_name = record1.getValue("project.project_name").toString();
+            System.out.println("VALUES:" + project_name + site_id + bl_id);
+        }
+        
+        final DocumentBuilder builder = new DocumentBuilder(doc);
+        builder.getPageSetup().setOrientation(Orientation.LANDSCAPE);
+        builder.getPageSetup().setLeftMargin(30);
+        builder.getPageSetup().setRightMargin(30);
+        builder.getPageSetup().setTopMargin(30);
+        builder.getPageSetup().setBottomMargin(40);
+        // doc.getFirstSection().getPageSetup().setPageStartingNumber(1);
+        final Section currentSection = builder.getCurrentSection();
+        currentSection.getPageSetup();
+        
+        /*
+         * for (final Section section : doc.getSections()) { // Up to three different footers are
+         * possible in a section (for first, even and odd // pages). // We check and delete all of
+         * them. HeaderFooter footer;
+         * 
+         * footer = section.getHeadersFooters()
+         * .getByHeaderFooterType(HeaderFooterType.HEADER_FIRST); if (footer != null) {
+         * footer.remove(); }
+         * 
+         * // Primary footer is the footer used for odd pages. footer =
+         * section.getHeadersFooters().getByHeaderFooterType( HeaderFooterType.HEADER_PRIMARY); if
+         * (footer != null) { footer.remove(); }
+         * 
+         * footer = section.getHeadersFooters().getByHeaderFooterType(HeaderFooterType.HEADER_EVEN);
+         * if (footer != null) { footer.remove(); } }
+         */
+        currentSection.getPageSetup();
+        
+        final BorderCollection borders = builder.getPageSetup().getBorders();
+        borders.setDistanceFromText(0);
+        borders.setColor(Color.GREEN);
+        borders.setLineWidth(14);
+        borders.setDistanceFromText(0);
+        borders.getByBorderType(BorderType.LEFT).setLineStyle(LineStyle.THICK);
+        borders.getByBorderType(BorderType.RIGHT).setLineStyle(LineStyle.THICK);
+        borders.getByBorderType(BorderType.TOP).setLineStyle(LineStyle.THICK);
+        borders.getByBorderType(BorderType.BOTTOM).setLineStyle(LineStyle.THICK);
+        borders.getByBorderType(BorderType.BOTTOM).setLineWidth(0);
+        borders.getByBorderType(BorderType.TOP).setLineWidth(0);
+        
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+        final Font font = builder.getFont();
+        font.setBold(true);
+        font.setSize(10);
+        font.setColor(Color.BLACK);
+        font.setItalic(false);
+        font.setName("Times New Roman");
+        font.setSpacing(1);
+        
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.RIGHT);
+        // Specify another header title for other pages.
+        builder.write("");
+        
+        builder.startTable();// Outermost table Table1
+        builder.insertCell();/* Topmost Green Border Row11 */
+        builder.getCellFormat().setWidth(1200);
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.CENTER);
+        builder.getCellFormat().getBorders().getLeft().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getTop().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GREEN);
+        builder.getCellFormat().setRightPadding(0);
+        builder.getCellFormat().setBottomPadding(0);
+        builder.getCellFormat().setLeftPadding(0);
+        builder.getCellFormat().setTopPadding(0);
+        // builder.getCellFormat().clearFormatting();
+        final RowFormat rowFormat = builder.getRowFormat();
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.writeln("Unclassified");
+        builder.endRow();
+        
+        builder.insertCell();/* Table1-Row2Column1 */
+        builder.getCellFormat().setWidth(30);
+        builder.getCellFormat().getBorders().getLeft().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getTop().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GREEN);
+        builder.getCellFormat().setRightPadding(0);
+        builder.getCellFormat().setBottomPadding(0);
+        builder.getCellFormat().setLeftPadding(0);
+        builder.getCellFormat().setTopPadding(0);
+        
+        builder.insertCell();/* Table1-Row2Column2 */
+        builder.getCellFormat().setWidth(1140);
+        builder.getCellFormat().getBorders().getLeft().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getTop().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.WHITE);
+        builder.getCellFormat().setRightPadding(0);
+        builder.getCellFormat().setBottomPadding(0);
+        builder.getCellFormat().setLeftPadding(0);
+        builder.getCellFormat().setTopPadding(0);
+        rowFormat.setHeight(500);
+        // rowFormat.setHeightRule(HeightRule.EXACTLY);
+        /************************** Symbol Table and Data ***********************/
+        builder.startTable();/* Main Inner Table 1 */
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+        builder.insertCell();/* Circle Image */
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(100);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.startTable();
+        builder.insertCell();/* Circle Image */
+        builder.getCellFormat().setWidth(100);
+        rowFormat.setHeight(100);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        // builder.writeln(" Cell");
+        try {
+            
+            builder
+                .insertImage(
+                    "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/archibus/schema/ab-core/graphics/ab-pnav-opener-gr.png",
+                    100, 100);
+        } catch (final Exception e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1040);
+        rowFormat.setHeight(100);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        // builder.writeln("hi");
+        builder.startTable();/* Symbol Table2 */
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln(" Project Code");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln(st);
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln("Project Name");
+        
+        builder.insertCell();
+        font.setBold(false);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln(project_name);
+        builder.endRow();
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln(" Site");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln(site_id);
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln(" Start Date");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln("Blank");
+        builder.endRow();
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.LEFT);
+        builder.writeln(" Building");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln(bl_id);
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln(" End Date");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(250);
+        builder.writeln("Blank");
+        
+        builder.endRow();
+        
+        builder.insertCell();
+        font.setBold(true);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(100);
+        builder.writeln(" Project Scope");
+        
+        builder.insertCell();
+        font.setBold(false);
+        rowFormat.setHeight(40);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(600);
+        builder.writeln(scope);
+        
+        builder.endRow();
+        builder.endTable();/* Symbol Table2 Ends */
+        builder.endTable();
+        builder.endRow();
+        // builder.endRow();/**/
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(10);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.endRow();/* Blank row for space */
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(150);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        // builder.writeln("Blankk kk again");
+        builder.startTable();
+        /*********************************************** Milestone table start *************************************************/
+        builder.insertCell();
+        rowFormat.setHeight(200);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(200);
+        try {
+            builder
+                .insertImage(
+                    "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/archibus/schema/ab-core/graphics/building/building1.jpg",
+                    200, 150);
+        } catch (final Exception e2) {
+            // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(20);
+        rowFormat.setHeight(150);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        /** Blank cell **/
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(920);
+        rowFormat.setHeight(150);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        
+        builder.startTable();
+        builder.insertCell();
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().setWidth(920);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GRAY);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.writeln("Milestones for 2014 -0002");
+        builder.endTable();
+        builder.endRow();
+        
+        builder.startTable();
+        builder.insertCell();
+        font.setBold(false);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.LIGHT_GRAY);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.LIGHT_GRAY);
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.CENTER);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().setWidth(330);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(1.0);
+        builder.writeln("Action Type");
+        builder.insertCell();
+        builder.getCellFormat().setWidth(230);
+        builder.writeln("Date Planned for");
+        builder.insertCell();
+        builder.getCellFormat().setWidth(230);
+        builder.writeln("Date Started");
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.insertCell();
+        builder.getCellFormat().setWidth(130);
+        builder.writeln("Status");
+        builder.endRow();
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        /** Loop Begins **/
+        String activity_type = "Blank";
+        int count = 0;
+        final DataSource activity = DataSourceFactory.createDataSource();
+        activity.addTable("activity_log");
+        activity.addField("project_id");
+        activity.addField("activity_log_id");
+        activity.addField("activity_type");
+        activity.addField("date_requested");
+        activity.addField("date_planned_for");
+        activity.addQuery("SELECT * FROM activity_log WHERE project_id ='" + st + "' ");
+        for (final DataRecord record2 : activity.getAllRecords()) {
+            count = count + 1;
+            record2.getValue("activity_log.activity_log_id").toString();
+            activity_type = record2.getValue("activity_log.activity_type").toString();
+            builder.insertCell();
+            builder.getCellFormat().getBorders().getRight().setLineWidth(1.0);
+            rowFormat.setHeight(20);
+            rowFormat.setHeightRule(HeightRule.EXACTLY);
+            builder.getCellFormat().getShading().setBackgroundPatternColor(Color.WHITE);
+            builder.getCellFormat().setWidth(330);
+            builder.writeln(activity_type);
+            builder.insertCell();
+            builder.getCellFormat().setWidth(230);
+            builder.writeln("Date Planned for");
+            builder.insertCell();
+            builder.getCellFormat().setWidth(230);
+            builder.writeln("Date Started");
+            builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+            builder.insertCell();
+            builder.getCellFormat().setWidth(130);
+            builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+            builder.writeln("Status");
+            
+            builder.endRow();
+            if (count > 3) {
+                builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+                break;
+            }
+        }
+        /** Loop End **/
+        builder.endTable();
+        
+        /*********************************************** Milestone table end *************************************************/
+        builder.endTable();
+        builder.endRow();
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(10);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.endRow();/* Blank row for space */
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GRAY);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.writeln("   Project Health 2014 - 0002");
+        builder.endRow();
+        
+        builder.insertCell();
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.WHITE);
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(40);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        // builder.writeln("Hi");
+        builder.startTable();
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.LIGHT_GRAY);
+        font.setBold(false);
+        font.setItalic(true);
+        font.setSize(12);
+        builder.getParagraphFormat().setAlignment(ParagraphAlignment.CENTER);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(1.0);
+        builder.writeln("Project Health");
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(1.0);
+        builder.writeln("Schedule Health");
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.writeln("Financial Health");
+        builder.endRow();
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.YELLOW);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        font.setBold(false);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(1.0);
+        builder.writeln("Answer1");
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.writeln("Answer22");
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.insertCell();
+        builder.getCellFormat().setWidth(380);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.writeln("Answer33");
+        builder.endTable();
+        builder.endRow();
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(10);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.WHITE);
+        builder.endRow();/* Blank row for space */
+        
+        builder.insertCell();
+        builder.getCellFormat().setWidth(1140);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.LIGHT_GRAY);
+        builder.writeln("Planned Vs.Actual 2014 - 0002");
+        
+        builder.endRow();
+        
+        builder.insertCell();
+        
+        builder.getCellFormat().setWidth(710);
+        rowFormat.setHeight(150);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        // builder.writeln("Project Health 2014 - 0002");
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.WHITE);
+        builder.getCellFormat().setWrapText(true);
+        try {
+            builder
+                .insertImage(
+                    "C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/archibus/schema/ab-core/graphics/building/paint.jpg",
+                    710, 150);
+            
+        } catch (final Exception e2) { // TODO Auto-generated catch block
+            e2.printStackTrace();
+        }
+        
+        builder.endRow();
+        builder.endTable();/* Main Inner Table1 Ends */
+        /************************** End Symbol Table Area **********************/
+        
+        builder.insertCell();/* Table1-Row2Column3 */
+        builder.getCellFormat().setWidth(30);
+        builder.getCellFormat().getBorders().getLeft().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getTop().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GREEN);
+        builder.getCellFormat().setRightPadding(0);
+        builder.getCellFormat().setBottomPadding(0);
+        builder.getCellFormat().setLeftPadding(0);
+        builder.getCellFormat().setTopPadding(0);
+        builder.endRow();
+        
+        builder.insertCell();/* Table1-Row3Column1 */
+        builder.getCurrentParagraph().getParagraphFormat().setAlignment(ParagraphAlignment.CENTER);
+        builder.getCellFormat().setWidth(1200);
+        builder.getCellFormat().getBorders().getLeft().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getRight().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getTop().setLineWidth(0.0);
+        builder.getCellFormat().getBorders().getBottom().setLineWidth(0.0);
+        builder.getCellFormat().getShading().setBackgroundPatternColor(Color.GREEN);
+        builder.getCellFormat().setRightPadding(0);
+        builder.getCellFormat().setBottomPadding(0);
+        builder.getCellFormat().setLeftPadding(0);
+        builder.getCellFormat().setTopPadding(0);
+        rowFormat.setHeight(20);
+        rowFormat.setHeightRule(HeightRule.EXACTLY);
+        font.setBold(true);
+        font.setItalic(false);
+        font.setSize(12);
+        builder.writeln("Unclassified");
+        builder.endRow();
+        builder.endTable();
+        //
+        try {
+            doc.save("C:/Program Files/Apache Software Foundation/Tomcat 6.0/webapps/archibus/schema/per-site/Compliance Survey Files/SurveyDocs/classification5.docx");
+            // doc.save("C:/Tomcat6/webapps/archibus/schema/per-site/Compliance Survey Files/SurveyDocs/ComplianceSurvey.docx");
+        } catch (final Exception e) {
+            // TODO Auto-generated catch block
+            e.printStackTrace();
+        }
+        return val;
+    }
+    
+    public String testit(final String question) throws IOException, SQLException, Exception {
+        License();
+        final String proj = "2010-JFKA-DEMOLISH-ASBESTOS";
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        final Connection con =
+                DriverManager.getConnection(
+                    "jdbc:sqlserver://192.168.0.14:1433;databasename=lagoon211", "sa", "oicu812");
+        final Statement st = con.createStatement();
+        final ResultSet rs =
+                st.executeQuery("Select project_id from project where project_id ='" + proj + "'");
+        while (rs.next()) {
+            final String s1 = rs.getString(1);
+            
+            System.out.println("************ProjectID *******************:" + s1);
+        }
+        con.close();
+        return "aa";
+    }
+    
