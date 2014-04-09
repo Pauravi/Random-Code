@@ -1,0 +1,19 @@
+
+    public String testit(final String question) throws IOException, SQLException, Exception {
+       
+        final String proj = "2010-JFKA-DEMOLISH-ASBESTOS";
+        Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+        final Connection con =
+                DriverManager.getConnection(
+                    "jdbc:sqlserver://192.168.0.14:1433;databasename=lagoon211", "sa", "oicu812");
+        final Statement st = con.createStatement();
+        final ResultSet rs =
+                st.executeQuery("Select project_id from project where project_id ='" + proj + "'");
+        while (rs.next()) {
+            final String s1 = rs.getString(1);
+            
+            System.out.println("************ProjectID *******************:" + s1);
+        }
+        con.close();
+        return "aa";
+    }
