@@ -1,0 +1,22 @@
+Images in Word documents are either represented by Shape nodes or by DrawingML nodes when loading into Aspose.Words' DOM. The image found in your document is actually represented by DrawingML node. Please read the members of DrawingML and Shape class from here:
+http://www.aspose.com/docs/display/wordsjava/Shape+Members
+http://www.aspose.com/docs/display/wordsjava/DrawingML+Members
+
+Please use the following code example to achieve your requirements. Hope this helps you. 
+
+Document doc = new Document(MyDir + "graph.docx");
+ 
+int i = 0;
+  for (Shape shape : (Iterable<Shape>) doc.getChildNodes(NodeType.SHAPE, true)) {
+    if (shape.hasImage()) {
+        shape.getImageData().save(MyDir + "Image.ExportImages.Out_" + i + FileFormatUtil.imageTypeToExtension(shape.getImageData().getImageType()));
+        i++;
+    }
+}
+ 
+  for (DrawingML dml : (Iterable<DrawingML>) doc.getChildNodes(NodeType.DRAWING_ML, true)) {
+    if (dml.hasImage()) {
+        dml.getImageData().save(MyDir + "Image.ExportImages.Out_" + i + FileFormatUtil.imageTypeToExtension(dml.getImageData().getImageType()));
+        i++;
+    }
+}
